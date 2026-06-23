@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* 🌟 Bind the baseline font calculation directly to the root layout body */
+:root {
+  --global-font-size: 15px;
+}
+
+html {
+  font-size: var(--global-font-size) !important;
+}
+
+body {
+  /* Using em forces sub-elements to scale proportionally to the root HTML size */
+  font-size: 1rem; 
+  transition: font-size 0.15s ease-in-out;
+}
+
+/* 🌟 Global Accessibility Override Rule */
+body.dyslexia-font,
+body.dyslexia-font *,
+body.dyslexia-font div,
+body.dyslexia-font button,
+body.dyslexia-font span,
+body.dyslexia-font p {
+  font-family: 'OpenDyslexic', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  word-spacing: 0.1em !important;
+}
