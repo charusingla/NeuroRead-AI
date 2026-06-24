@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Sparkles, Compass, Shield, Sun, Moon, LogOut, ArrowRight, BrainCircuit, Star, Volume2, VolumeX } from 'lucide-react';
 import InteractiveBrainCanvas from './components/InteractiveBrainCanvas';
 import Toolbar from './components/Toolbar';
@@ -49,6 +50,32 @@ export default function App() {
   const [theme, setTheme] = useState('light');
   const [toasts, setToasts] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const cleanView = currentView === 'landing' ? '' : currentView;
+    if (window.location.pathname !== `/${cleanView}`) {
+      navigate(`/${cleanView}`);
+    }
+  }, [currentView, navigate]);
+
+  // 👑 2. Safely read browser URLs on refresh without causing blank screen locks
+  useEffect(() => {
+    const rawPath = window.location.pathname.replace('/', '').trim();
+    
+    // Explicit array whitelist of your application views
+    const validViews = [
+      'dashboard', 'ai-reader', 'gaming-zone', 'anchor-lab', 
+      'ocr-scanner', 'tutor-chat', 'speech-practice', 'my-profile', 'auth'
+    ];
+
+    if (validViews.includes(rawPath)) {
+      setCurrentView(rawPath);
+    } else {
+      setCurrentView('landing'); // Fallback ensures your app never opens a blank screen
+    }
+  }, []);
 
   // Layout Adjustment Visual Controls Core States
   const [fontSize, setFontSize] = useState(15);

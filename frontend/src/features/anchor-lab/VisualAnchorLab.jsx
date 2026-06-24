@@ -1,4 +1,3 @@
-// frontend/src/features/anchor-lab/VisualAnchorLab.jsx
 import React, { useState } from 'react';
 import { Trash2 } from 'lucide-react'; // 👑 Added clean delete icon reference
 
