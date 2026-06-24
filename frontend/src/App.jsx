@@ -306,7 +306,7 @@ export default function App() {
           <div className="py-0 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
             <div className="lg:col-span-6 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full text-xs font-black uppercase tracking-wider"><Sparkles size={12} /> Refactored Architecture Bundle</div>
-              <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-none text-black dark:text-white">Learning should feel <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-teal-400">FUN.</span></h1>
+              <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-none text-black dark:text-white transition-colors duration-300 ease-in-out">Learning should feel{" "} <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-teal-400">FUN.</span></h1>
               <p className="text-slate-500 dark:text-slate-400 text-justify font-semibold text-lg leading-relaxed">Welcome to your personalized dyslexia support dashboard, designed to make learning simpler, engaging, and stress-free. Access interactive tools, track your progress, and explore activities tailored to strengthen reading, writing, and comprehension skills at your own pace. Our goal is to create an accessible and confidence-building learning environment where every student can grow, learn, and succeed without barriers.</p>
               <button onClick={() => { triggerAudioCue('click'); setCurrentView('auth'); }} className="px-6 py-3.5 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-2xl font-bold text-sm shadow-xl shadow-indigo-500/10 hover:opacity-95 transition-all flex items-center gap-2">Enter Studio Sandbox <ArrowRight size={16} /></button>
             </div>
@@ -332,6 +332,7 @@ export default function App() {
             apiBase={API_BASE} 
             showToast={showToast} 
             triggerAudioCue={triggerAudioCue}
+            onExit={() => setCurrentView('landing')} // 👑 Redirects cleanly back to your Landing Home Sandbox layout!
           />
         )}
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BrainCircuit, Eye, EyeOff } from 'lucide-react';
+import { BrainCircuit, Eye, EyeOff, X } from 'lucide-react';
 
-export default function AuthScreen({ onAuthSuccess, apiBase, showToast, triggerAudioCue }) {
+export default function AuthScreen({ onAuthSuccess, apiBase, showToast, triggerAudioCue, onExit }) {
   const [authMode, setAuthMode] = useState('login');
   const [authUsername, setAuthUsername] = useState('');
   const [authPassword, setAuthPassword] = useState(''); 
@@ -70,7 +70,19 @@ export default function AuthScreen({ onAuthSuccess, apiBase, showToast, triggerA
 
   return (
     <div className="max-w-md mx-auto px-6 py-4 text-left relative z-10 animate-in fade-in duration-300">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/60 dark:border-slate-800/80 shadow-xl space-y-6 transition-colors">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200/60 dark:border-slate-800/80 shadow-xl space-y-6 transition-colors relative">
+        
+        {/* 👑 ACCESSIBLE EXIT CORNER BUTTON */}
+        <button
+          type="button"
+          onClick={() => handleActionClick(onExit)}
+          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-50 dark:hover:bg-slate-950 border border-transparent hover:border-slate-100 dark:hover:border-slate-800/80 transition-all duration-200 cursor-pointer group"
+          title="Return to Landing Page"
+          aria-label="Exit registration portal"
+        >
+          <X size={18} className="group-hover:scale-110 transition-transform duration-200" />
+        </button>
+
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-1.5">
             <BrainCircuit size={16} className="text-indigo-600 dark:text-indigo-400" />
@@ -150,7 +162,6 @@ export default function AuthScreen({ onAuthSuccess, apiBase, showToast, triggerA
               Sign In
             </button>
             
-            {/* 👑 ADAPTIVE VIEW LOCKOUT: Completely hides student signup path if admin email matches */}
             {!isAdminEmail && (
               <button 
                 type="button" 
