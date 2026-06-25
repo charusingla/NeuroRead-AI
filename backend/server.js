@@ -47,10 +47,8 @@ const seedAdminUser = async () => {
 seedAdminUser();
 
 const app = express();
-app.use(cors({
-  origin: true, // Allows our future live website to talk to this backend safely
-  credentials: true
-}));
+// Allows your frontend to communicate flawlessly with your backend API without CORS issues
+app.use(cors({origin: '*'}));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
