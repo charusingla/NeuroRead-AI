@@ -1,5 +1,7 @@
 # 🧠 NeuroRead AI
 
+Link: https://neuro-read-ai.vercel.app/
+
 NeuroRead AI is an advanced, gamified, and highly adaptive educational technology ecosystem engineered specifically to support individuals with dyslexia, dysgraphia, auditory processing challenges, and visual sensitivities (such as Irlen Syndrome). By combining modern AI engines, machine learning OCR, and client-side web audio engines, the platform deconstructs text rules seamlessly into multi-sensory visual anchors, phonics exercises, and real-time speech processing labs to control visual fatigue and eliminate learning barriers.
 
 ---
